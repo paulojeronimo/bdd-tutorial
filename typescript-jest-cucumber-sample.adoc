@@ -1,0 +1,2 @@
+[[typescript-jest-cucumber-sample]]
+= TypeScript sample with Jest Cucumber

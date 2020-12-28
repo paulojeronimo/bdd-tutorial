@@ -1,0 +1,2 @@
+[[kotlin-spek-sample]]
+= Kotlin sample with Spek Framework

@@ -1,0 +1,276 @@
+[[java-cucumber-sample]]
+= Java sample with Cucumber
+
+I created this example in 2013. So, this code is very old (like Java).
+http://ladoservidor.blogspot.com/2013/04/agilebrazil-1.html[Read my
+original blog post about it^] (written in Brazilian Portuguese):
+
+== Final code (created by following the tutorial below)
+
+Download:
+
+----
+$ git clone https://github.com/paulojeronimo/java-cucumber-sample
+----
+
+Quick demonstration:
+
+----
+$ cd java-cucumber-sample
+$ git checkout en; mvn test
+$ git checkout pt-br; mvn clean test
+----
+
+== Tutorial
+
+----
+$ d=java-cucumber-sample; rm -rf $d && mkdir -p $d && cd $d
+$ d=src/test/resources/com/ladoservidor/cucumber/helloworld; mkdir -p $d
+$ cat > $d/helloworld.feature <<'EOF'
+Feature: Hello World
+
+  Scenario: Say hello
+    Given I have a hello app with "Hello"
+    When I ask it to say hi
+    Then it should answer with "Hello World"
+EOF
+----
+
+----
+$ cat > pom.xml <<'EOF'
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ladoservidor</groupId>
+    <artifactId>cucumber-jvm-helloworld</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <name>cucumber-jvm/HelloWorld</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.2</version>
+                <configuration>
+                    <useFile>false</useFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>1.1.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>1.1.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+EOF
+----
+
+----
+$ d=src/test/java/com/ladoservidor/cucumber/helloworld; mkdir -p $d
+$ cat > $d/RunCukesTest.java <<'EOF'
+package com.ladoservidor.cucumber.helloworld;
+
+import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@Cucumber.Options(
+  format = {
+    "pretty", 
+    "html:target/cucumber-html-report", 
+    "json-pretty:target/cucumber-json-report.json"
+  }
+)
+public class RunCukesTest {
+}
+EOF
+----
+
+----
+$ mvn test
+$ tree target
+$ open target/cucumber-html-report/index.html
+----
+
+----
+$ cat > $d/HelloStepdefs.java <<'EOF'
+package com.ladoservidor.cucumber.helloworld;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+import static org.junit.Assert.assertEquals;
+
+public class HelloStepdefs {
+    private Hello hello;
+    private String hi;
+
+    @Given("^I have a hello app with \"([^\"]*)\"$")
+    public void I_have_a_hello_app_with(String greeting) {
+        hello = new Hello(greeting);
+    }
+
+    @When("^I ask it to say hi$")
+    public void I_ask_it_to_say_hi() {
+        hi = hello.sayHi();
+    }
+
+    @Then("^it should answer with \"([^\"]*)\"$")
+    public void it_should_answer_with(String expectedHi) {
+        assertEquals(expectedHi, hi);
+    }
+}
+EOF
+----
+
+----
+$ d=src/main/java/com/ladoservidor/cucumber/helloworld; mkdir -p $d
+$ cat > $d/Hello.java <<'EOF'
+package com.ladoservidor.cucumber.helloworld;
+
+public class Hello {
+    private final String greeting;
+
+    public Hello(String greeting) {
+        this.greeting = greeting;
+    }
+
+    public String sayHi() {
+        return greeting + " World";
+    }
+}
+EOF
+----
+
+----
+$ echo target > .gitignore
+$ git init; git add .; git commit -m 'Initial commit'
+$ git tag en
+----
+
+----
+$ d=src/test/resources/com/ladoservidor/cucumber/helloworld
+cat > $d/helloworld.feature <<'EOF'
+# language: pt
+Funcionalidade: Diga Olá
+
+  Cenário: Dizer "Olá Fulano!"
+    Dado que eu tenho uma app que recebe "Paulo"
+    Quando eu pedir que ela diga olá
+    Então ela deveria responder "Olá Paulo!"
+EOF
+----
+
+----
+$ patch -p1 <<'EOF'
+--- ./src/test/java/com/ladoservidor/cucumber/helloworld/RunCukesTest.java  2013-04-05 15:44:14.000000000 -0300
++++ ../HelloWorld.pt/src/test/java/com/ladoservidor/cucumber/helloworld/RunCukesTest.java 2013-04-05 15:45:15.000000000 -0300
+@@ -8,7 +8,8 @@ import org.junit.runner.RunWith;
+   format = {
+     "pretty", 
+     "html:target/cucumber-html-report", 
+-    "json-pretty:target/cucumber-json-report.json"
++    "json-pretty:target/cucumber-json-report.json",
++    "json:target/cucumber-pt.json"
+   }
+ )
+ public class RunCukesTest {
+EOF
+----
+
+----
+$ patch -p1 <<'EOF'
+--- ./src/test/java/com/ladoservidor/cucumber/helloworld/HelloStepdefs.java 2013-04-05 15:44:14.000000000 -0300
++++ ../HelloWorld.pt/src/test/java/com/ladoservidor/cucumber/helloworld/HelloStepdefs.java  2013-04-05 15:45:15.000000000 -0300
+@@ -1,8 +1,8 @@
+ package com.ladoservidor.cucumber.helloworld;
+ 
+-import cucumber.api.java.en.Given;
+-import cucumber.api.java.en.Then;
+-import cucumber.api.java.en.When;
++import cucumber.api.java.pt.Dado;
++import cucumber.api.java.pt.Quando;
++import cucumber.api.java.pt.Entao;
+ 
+ import static org.junit.Assert.assertEquals;
+ 
+@@ -10,17 +10,17 @@ public class HelloStepdefs {
+     private Hello hello;
+     private String hi;
+ 
+-    @Given("^I have a hello app with \"([^\"]*)\"$")
++    @Dado("^que eu tenho uma app que recebe \"([^\"]*)\"$")
+     public void I_have_a_hello_app_with(String greeting) {
+         hello = new Hello(greeting);
+     }
+ 
+-    @When("^I ask it to say hi$")
++    @Quando("^eu pedir que ela diga olá$")
+     public void I_ask_it_to_say_hi() {
+         hi = hello.sayHi();
+     }
+ 
+-    @Then("^it should answer with \"([^\"]*)\"$")
++    @Entao("^ela deveria responder \"([^\"]*)!\"$")
+     public void it_should_answer_with(String expectedHi) {
+         assertEquals(expectedHi, hi);
+     }
+EOF
+----
+
+----
+$ mvn clean test
+----
+
+----
+$ patch -p1 <<'EOF'
+--- ./src/main/java/com/ladoservidor/cucumber/helloworld/Hello.java 2013-04-05 15:44:14.000000000 -0300
++++ ../HelloWorld.pt/src/main/java/com/ladoservidor/cucumber/helloworld/Hello.java  2013-04-05 15:45:15.000000000 -0300
+@@ -8,6 +8,6 @@ public class Hello {
+     }
+
+     public String sayHi() {
+-        return greeting + " World";
++        return "Olá " + greeting;
+     }
+ }
+EOF
+----
+
+----
+$ mvn clean test
+$ git add . && git commit -m 'Added support to pt-br'
+$ git tag pt-br
+----

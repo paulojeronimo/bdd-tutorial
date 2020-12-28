@@ -1,0 +1,2 @@
+[[groovy-spock-sample]]
+= Groovy sample with Spock Framework
