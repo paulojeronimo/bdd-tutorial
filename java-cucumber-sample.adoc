@@ -280,3 +280,11 @@ $ mvn clean test
 $ git add . && git commit -m 'Added support to pt-br'
 $ git tag pt-br
 ----
+
+If you are "Paulo Jerônimo" (hehehe) push this code this way:
+
+----
+$ git remote add origin git@github.com:paulojeronimo/java-cucumber-sample.git
+$ git branch -M main
+$ git push -u origin main -f --tags
+----
