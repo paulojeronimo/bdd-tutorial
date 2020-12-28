@@ -176,13 +176,19 @@ EOF
 
 ----
 $ echo target > .gitignore
+$ cat > README.adoc <<'EOF'
+= java-cucumber-sample
+
+Read https://paulojeronimo.com/bdd-tutorial/#java-cucumber-sample.
+
+EOF
 $ git init; git add .; git commit -m 'Initial commit'
 $ git tag en
 ----
 
 ----
 $ d=src/test/resources/com/ladoservidor/cucumber/helloworld
-cat > $d/helloworld.feature <<'EOF'
+$ cat > $d/helloworld.feature <<'EOF'
 # language: pt
 Funcionalidade: Diga Olá
 
