@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-28 14:42:30 -0300">
+<meta name="author" content="Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-28 14:52:07 -0300">
 <title>Behavior-driven development (BDD) Tutorial</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -442,7 +442,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Behavior-driven development (BDD) Tutorial</h1>
 <div class="details">
-<span id="author" class="author">Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-28 14:42:30 -0300</span><br>
+<span id="author" class="author">Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-28 14:52:07 -0300</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -682,6 +682,12 @@ EOF</pre>
 <div class="listingblock">
 <div class="content">
 <pre>$ echo target &gt; .gitignore
+$ cat &gt; README.adoc &lt;&lt;'EOF'
+= java-cucumber-sample
+
+Read https://paulojeronimo.com/bdd-tutorial/#java-cucumber-sample.
+
+EOF
 $ git init; git add .; git commit -m 'Initial commit'
 $ git tag en</pre>
 </div>
@@ -689,7 +695,7 @@ $ git tag en</pre>
 <div class="listingblock">
 <div class="content">
 <pre>$ d=src/test/resources/com/ladoservidor/cucumber/helloworld
-cat &gt; $d/helloworld.feature &lt;&lt;'EOF'
+$ cat &gt; $d/helloworld.feature &lt;&lt;'EOF'
 # language: pt
 Funcionalidade: Diga Olá
 
