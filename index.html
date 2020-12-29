@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-29 07:55:12 -0300">
+<meta name="author" content="Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-29 12:25:02 -0300">
 <title>Behavior-driven development (BDD) Tutorial</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -442,7 +442,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Behavior-driven development (BDD) Tutorial</h1>
 <div class="details">
-<span id="author" class="author">Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-29 07:55:12 -0300</span><br>
+<span id="author" class="author">Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-29 12:25:02 -0300</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -450,19 +450,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#java-cucumber-sample">2. Java sample with Cucumber</a>
 <ul class="sectlevel2">
-<li><a href="#final_code_created_by_following_the_tutorial_below">2.1. Final code (created by following the tutorial below)</a></li>
-<li><a href="#tutorial">2.2. Tutorial</a></li>
-<li><a href="#nice_references">2.3. Nice references</a></li>
+<li><a href="#java_version">2.1. Java version</a></li>
+<li><a href="#final_code_created_by_following_the_tutorial_below">2.2. Final code (created by following the tutorial below)</a></li>
+<li><a href="#final_code_test">2.3. Final code test</a></li>
+<li><a href="#tutorial">2.4. Tutorial</a></li>
+<li><a href="#explore_more">2.5. Explore more</a></li>
+<li><a href="#references">2.6. References</a></li>
 </ul>
 </li>
 <li><a href="#javascript-cucumber-sample">3. JavaScript sample with Cucumber</a>
 <ul class="sectlevel2">
-<li><a href="#initial_and_final_code_download">3.1. Initial and final code download</a></li>
-<li><a href="#tutorial_2">3.2. Tutorial</a></li>
-<li><a href="#nice_references_2">3.3. Nice references</a></li>
+<li><a href="#node_and_yarn_versions">3.1. Node and Yarn versions</a></li>
+<li><a href="#initial_and_final_code_download">3.2. Initial and final code download</a></li>
+<li><a href="#final_code_test_2">3.3. Final code test</a></li>
+<li><a href="#tutorial_2">3.4. Tutorial</a></li>
+<li><a href="#references_2">3.5. References</a></li>
 </ul>
 </li>
-<li><a href="#typescript-jest-cucumber-sample">4. TypeScript sample with Jest Cucumber</a></li>
+<li><a href="#typescript-jest-cucumber-sample">4. TypeScript sample with Jest Cucumber</a>
+<ul class="sectlevel2">
+<li><a href="#node_and_yarn_versions_2">4.1. Node and Yarn versions</a></li>
+<li><a href="#initial_and_final_code_download_2">4.2. Initial and final code download</a></li>
+<li><a href="#tutorial_3">4.3. Tutorial</a></li>
+<li><a href="#references_3">4.4. References</a></li>
+</ul>
+</li>
 <li><a href="#groovy-spock-sample">5. Groovy sample with Spock Framework</a></li>
 <li><a href="#kotlin-spek-sample">6. Kotlin sample with Spek Framework</a></li>
 </ul>
@@ -502,23 +514,34 @@ and frameworks:</p>
 <h2 id="java-cucumber-sample">2. Java sample with Cucumber</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>Source code: <a href="https://github.com/paulojeronimo/java-cucumber-sample" class="bare">https://github.com/paulojeronimo/java-cucumber-sample</a>.</p>
+</div>
+<div class="paragraph">
 <p>I created this example in 2013. So, this code is very old (like Java).
 <a href="http://ladoservidor.blogspot.com/2013/04/agilebrazil-1.html" target="_blank" rel="noopener">Read my
-original blog post about it</a> (written in Brazilian Portuguese):</p>
+original blog post about it</a> (written in Brazilian Portuguese).</p>
 </div>
 <div class="sect2">
-<h3 id="final_code_created_by_following_the_tutorial_below">2.1. Final code (created by following the tutorial below)</h3>
-<div class="paragraph">
-<p>Download:</p>
+<h3 id="java_version">2.1. Java version</h3>
+<div class="listingblock">
+<div class="content">
+<pre>$ java -version
+openjdk version "1.8.0_275"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_275-b01)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.275-b01, mixed mode)</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="final_code_created_by_following_the_tutorial_below">2.2. Final code (created by following the tutorial below)</h3>
 <div class="listingblock">
 <div class="content">
 <pre>$ git clone https://github.com/paulojeronimo/java-cucumber-sample</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Quick demonstration:</p>
 </div>
+<div class="sect2">
+<h3 id="final_code_test">2.3. Final code test</h3>
 <div class="listingblock">
 <div class="content">
 <pre>$ cd java-cucumber-sample
@@ -528,7 +551,7 @@ $ git checkout pt-br; mvn clean test</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tutorial">2.2. Tutorial</h3>
+<h3 id="tutorial">2.4. Tutorial</h3>
 <div class="listingblock">
 <div class="content">
 <pre>$ d=java-cucumber-sample; rm -rf $d &amp;&amp; mkdir -p $d &amp;&amp; cd $d
@@ -812,7 +835,24 @@ $ git push -u origin main -f --tags</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="nice_references">2.3. Nice references</h3>
+<h3 id="explore_more">2.5. Explore more</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Cucumber sample using Spring Boot:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/paulojeronimo/spring-cucumber-rest-api" class="bare">https://github.com/paulojeronimo/spring-cucumber-rest-api</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="references">2.6. References</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -829,11 +869,11 @@ $ git push -u origin main -f --tags</pre>
 <div class="sect1">
 <h2 id="javascript-cucumber-sample">3. JavaScript sample with Cucumber</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="initial_and_final_code_download">3.1. Initial and final code download</h3>
 <div class="paragraph">
-<p>node and yarn versions:</p>
+<p>Source code: <a href="https://github.com/paulojeronimo/javascript-cucumber-sample" class="bare">https://github.com/paulojeronimo/javascript-cucumber-sample</a>.</p>
 </div>
+<div class="sect2">
+<h3 id="node_and_yarn_versions">3.1. Node and Yarn versions</h3>
 <div class="literalblock">
 <div class="content">
 <pre>$ node -v
@@ -842,18 +882,18 @@ $ yarn -v
 1.22.4</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Download:</p>
 </div>
+<div class="sect2">
+<h3 id="initial_and_final_code_download">3.2. Initial and final code download</h3>
 <div class="literalblock">
 <div class="content">
 <pre>$ git clone https://github.com/paulojeronimo/javascript-cucumber-sample
 $ cd javascript-cucumber-sample; javascript_cucumber_sample=$PWD</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Quick demonstration of the final code:</p>
 </div>
+<div class="sect2">
+<h3 id="final_code_test_2">3.3. Final code test</h3>
 <div class="literalblock">
 <div class="content">
 <pre>$ cd final
@@ -863,7 +903,7 @@ $ yarn test</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tutorial_2">3.2. Tutorial</h3>
+<h3 id="tutorial_2">3.4. Tutorial</h3>
 <div class="literalblock">
 <div class="content">
 <pre>$ d=$javascript_cucumber_sample/tutorial; rm -rf $d &amp;&amp; mkdir $d &amp;&amp; cd $d</pre>
@@ -872,8 +912,12 @@ $ yarn test</pre>
 <div class="literalblock">
 <div class="content">
 <pre>$ yarn init -y
-$ yarn add @cucumber/cucumber --dev
-$ echo node_modules &gt; .gitignore
+$ yarn add @cucumber/cucumber --dev</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ echo node_modules &gt; .gitignore
 $ git init; git add .</pre>
 </div>
 </div>
@@ -999,7 +1043,7 @@ $ git push -u origin main -f --tags</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="nice_references_2">3.3. Nice references</h3>
+<h3 id="references_2">3.5. References</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1019,19 +1063,154 @@ $ git push -u origin main -f --tags</pre>
 <div class="sect1">
 <h2 id="typescript-jest-cucumber-sample">4. TypeScript sample with Jest Cucumber</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Source code: <a href="https://github.com/paulojeronimo/typescript-jest-cucumber-sample" class="bare">https://github.com/paulojeronimo/typescript-jest-cucumber-sample</a></p>
+</div>
+<div class="sect2">
+<h3 id="node_and_yarn_versions_2">4.1. Node and Yarn versions</h3>
+<div class="literalblock">
+<div class="content">
+<pre>$ node -v
+v12.18.3
+$ yarn -v
+1.22.4</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="initial_and_final_code_download_2">4.2. Initial and final code download</h3>
+<div class="literalblock">
+<div class="content">
+<pre>$ git clone https://github.com/paulojeronimo/typescript-jest-cucumber-sample
+$ cd typescript-jest-cucumber-sample; typescript_jest_cucumber_sample=$PWD</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="final_code_test_3">4.2.1. Final code test</h4>
+<div class="literalblock">
+<div class="content">
+<pre>$ cd final
+$ yarn install
+$ yarn test</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tutorial_3">4.3. Tutorial</h3>
+<div class="literalblock">
+<div class="content">
+<pre>d=$typescript_jest_cucumber_sample/tutorial; rm -rf $d &amp;&amp; mkdir $d &amp;&amp; cd $d</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn init -y
+$ yarn add typescript
+$ yarn add jest @types/jest ts-node ts-jest --dev
+$ `yarn bin`/tsc --init</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ `yarn bin`/jest --init</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Would you like to use Typescript for the configuration file? › (y/N) yes
+</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ echo node_modules &gt; .gitignore
+$ git init; git add .</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn add jest-cucumber --dev</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git apply ../patches/jest.config.ts.diff</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ (cd ../initial; rsync -R cucumber/features/basic-scenarios.feature ../tutorial/)
+$ (cd ../initial; rsync -R cucumber/step-definitions/basic-scenarios.steps.ts ../tutorial/)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git apply ../patches/cucumber/features/basic-scenarios.steps.ts.diff
+$ (cd ../initial; rsync -R src/password-validator.ts ../tutorial/)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git add .
+$ git commit -m 'Initial commit'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are "Paulo Jerônimo" (hehehe) push this code this way:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ cd ..
+$ rsync -av --exclude .git --exclude node_modules tutorial/ final/
+$ git remote add origin git@github.com:paulojeronimo/typescript-jest-cucumber-sample.git
+$ git branch -M main
+$ git push -u origin main -f --tags</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="references_3">4.4. References</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/bencompton/jest-cucumber" class="bare">https://github.com/bencompton/jest-cucumber</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="groovy-spock-sample">5. Groovy sample with Spock Framework</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Source code: <a href="https://github.com/paulojeronimo/java-enums-generator" class="bare">https://github.com/paulojeronimo/java-enums-generator</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="kotlin-spek-sample">6. Kotlin sample with Spek Framework</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p><strong><span class="red">Comming soon &#8230;&#8203;</span></strong></p>
+</div>
 </div>
 </div>
 </div>
