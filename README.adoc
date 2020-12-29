@@ -6,6 +6,7 @@ Paulo Jerônimo <pj@paulojeronimo.com>, {localdatetime}
 :idprefix:
 :idsepartor: -
 :nofooter:
+:source-highlighter: pygments
 
 :BDD: https://en.wikipedia.org/wiki/Behavior-driven_development[BDD^]
 

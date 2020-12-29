@@ -1,2 +1,156 @@
 [[javascript-cucumber-sample]]
 = JavaScript sample with Cucumber
+
+== Initial and final code download
+
+node and yarn versions:
+
+	$ node -v
+	v12.18.3
+	$ yarn -v
+	1.22.4
+
+Download:
+
+	$ git clone https://github.com/paulojeronimo/javascript-cucumber-sample
+	$ cd javascript-cucumber-sample; javascript_cucumber_sample=$PWD
+
+Quick demonstration of the final code:
+
+	$ cd final
+	$ yarn install
+	$ yarn test
+
+== Tutorial
+
+	$ d=$javascript_cucumber_sample/tutorial; rm -rf $d && mkdir $d && cd $d
+
+	$ yarn init -y
+	$ yarn add @cucumber/cucumber --dev
+	$ echo node_modules > .gitignore
+	$ git init; git add .
+
+	$ git apply < ../initial/package.json.diff
+
+//[source,diff]
+//----
+//include::javascript-cucumber-sample/initial/package.json.diff[]
+//----
+
+	$ (cd ../initial; rsync -R features/is_it_friday_yet.feature ../tutorial/)
+
+//[source,gherkin]
+//----
+//include::javascript-cucumber-sample/initial/features/is_it_friday_yet.feature[]
+//----
+
+	$ yarn test
+
+//link:javascript-cucumber-sample/outputs/yarn-test.0.txt[See the output]
+
+	$ mkdir -p features/step_definitions
+----
+$ cat > features/step_definitions/steps.js <<EOF
+const { Given, When, Then } = require('@cucumber/cucumber')
+
+$(`yarn bin`/cucumber-js --format snippets 2> /dev/null)
+EOF
+----
+
+	$ yarn test
+
+//link:javascript-cucumber-sample/outputs/yarn-test.1.txt[See the output]
+
+	$ git add .
+
+	$ cp ../initial/features/step_definitions/steps.js features/step_definitions/
+
+//[source,javascript]
+//----
+//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js[]
+//----
+
+	$ yarn test
+
+//link:javascript-cucumber-sample/outputs/yarn-test.2.txt[See the output]
+
+	$ git add .
+	$ git apply ../initial/features/step_definitions/steps.js.2.diff
+
+//[source,diff]
+//----
+//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js.2.diff[]
+//----
+
+	$ yarn test
+
+//link:javascript-cucumber-sample/outputs/yarn-test.3.txt[See the output]
+
+	$ git add .
+
+	$ git apply ../initial/features/is_it_friday_yet.feature.diff
+	$ git apply ../initial/features/step_definitions/steps.js.3.diff
+
+//[source,diff]
+//----
+//include::javascript-cucumber-sample/initial/features/is_it_friday_yet.feature.diff[]
+//----
+
+//[source,diff]
+//----
+//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js.3.diff[]
+//----
+
+	$ yarn test
+
+//link:javascript-cucumber-sample/outputs/yarn-test.4.txt[See the output]
+
+	$ git add .
+
+	$ git apply ../initial/features/step_definitions/steps.js.4.diff
+
+//[source,diff]
+//----
+//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js.4.diff[]
+//----
+
+	$ yarn test
+
+//link:javascript-cucumber-sample/outputs/yarn-test.5.txt[See the output]
+
+	$ git apply ../initial/features/is_it_friday_yet.feature.2.diff
+	$ git apply ../initial/features/step_definitions/steps.js.5.diff
+
+//[source,diff]
+//----
+//include::javascript-cucumber-sample/initial/features/is_it_friday_yet.feature.2.diff[]
+//----
+
+//[source,diff]
+//----
+//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js.5.diff[]
+//----
+
+	$ yarn test
+
+//link:javascript-cucumber-sample/outputs/yarn-test.6.txt[See the output]
+
+----
+$ git add .
+$ git commit -m 'Initial commit'
+----
+
+If you are "Paulo Jerônimo" (hehehe) push this code this way:
+
+----
+$ cd ..
+$ rsync -av --exclude .git --exclude node_modules tutorial/ final/
+$ git remote add origin git@github.com:paulojeronimo/javascript-cucumber-sample.git
+$ git branch -M main
+$ git push -u origin main -f --tags
+----
+
+== Nice references
+
+include::cucumber-references.adoc[]
+* https://cucumber.io/docs/cucumber/checking-assertions/#javascript

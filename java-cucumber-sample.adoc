@@ -288,3 +288,7 @@ $ git remote add origin git@github.com:paulojeronimo/java-cucumber-sample.git
 $ git branch -M main
 $ git push -u origin main -f --tags
 ----
+
+== Nice references
+
+include::cucumber-references.adoc[]
