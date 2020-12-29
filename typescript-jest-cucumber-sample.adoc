@@ -1,2 +1,67 @@
 [[typescript-jest-cucumber-sample]]
 = TypeScript sample with Jest Cucumber
+
+Source code: https://github.com/paulojeronimo/typescript-jest-cucumber-sample
+
+== Node and Yarn versions
+
+	$ node -v
+	v12.18.3
+	$ yarn -v
+	1.22.4
+
+== Initial and final code download
+
+	$ git clone https://github.com/paulojeronimo/typescript-jest-cucumber-sample
+	$ cd typescript-jest-cucumber-sample; typescript_jest_cucumber_sample=$PWD
+
+=== Final code test
+
+	$ cd final
+	$ yarn install
+	$ yarn test
+
+== Tutorial
+
+	d=$typescript_jest_cucumber_sample/tutorial; rm -rf $d && mkdir $d && cd $d
+
+	$ yarn init -y
+	$ yarn add typescript
+	$ yarn add jest @types/jest ts-node ts-jest --dev
+	$ `yarn bin`/tsc --init
+
+	$ `yarn bin`/jest --init
+
+NOTE: Would you like to use Typescript for the configuration file? › (y/N) yes
+
+	$ echo node_modules > .gitignore
+	$ git init; git add .
+
+	$ yarn add jest-cucumber --dev
+
+	$ git apply ../patches/jest.config.ts.diff
+
+	$ (cd ../initial; rsync -R cucumber/features/basic-scenarios.feature ../tutorial/)
+	$ (cd ../initial; rsync -R cucumber/step-definitions/basic-scenarios.steps.ts ../tutorial/)
+
+	$ yarn test
+
+	$ git apply ../patches/cucumber/features/basic-scenarios.steps.ts.diff
+	$ (cd ../initial; rsync -R src/password-validator.ts ../tutorial/)
+
+	$ yarn test
+
+	$ git add .
+	$ git commit -m 'Initial commit'
+
+If you are "Paulo Jerônimo" (hehehe) push this code this way:
+
+	$ cd ..
+	$ rsync -av --exclude .git --exclude node_modules tutorial/ final/
+	$ git remote add origin git@github.com:paulojeronimo/typescript-jest-cucumber-sample.git
+	$ git branch -M main
+	$ git push -u origin main -f --tags
+
+== References
+
+* https://github.com/bencompton/jest-cucumber

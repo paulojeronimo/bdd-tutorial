@@ -7,15 +7,22 @@ I created this example in 2013. So, this code is very old (like Java).
 http://ladoservidor.blogspot.com/2013/04/agilebrazil-1.html[Read my
 original blog post about it^] (written in Brazilian Portuguese).
 
-== Final code (created by following the tutorial below)
+== Java version
 
-Download:
+----
+$ java -version
+openjdk version "1.8.0_275"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_275-b01)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.275-b01, mixed mode)
+----
+
+== Final code (created by following the tutorial below)
 
 ----
 $ git clone https://github.com/paulojeronimo/java-cucumber-sample
 ----
 
-Quick demonstration:
+== Final code test
 
 ----
 $ cd java-cucumber-sample

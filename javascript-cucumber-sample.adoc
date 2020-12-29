@@ -3,21 +3,19 @@
 
 Source code: https://github.com/paulojeronimo/javascript-cucumber-sample.
 
-== Initial and final code download
-
-node and yarn versions:
+== Node and Yarn versions
 
 	$ node -v
 	v12.18.3
 	$ yarn -v
 	1.22.4
 
-Download:
+== Initial and final code download
 
 	$ git clone https://github.com/paulojeronimo/javascript-cucumber-sample
 	$ cd javascript-cucumber-sample; javascript_cucumber_sample=$PWD
 
-Quick demonstration of the final code:
+== Final code test
 
 	$ cd final
 	$ yarn install
@@ -29,6 +27,7 @@ Quick demonstration of the final code:
 
 	$ yarn init -y
 	$ yarn add @cucumber/cucumber --dev
+
 	$ echo node_modules > .gitignore
 	$ git init; git add .
 
