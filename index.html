@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-28 15:03:58 -0300">
+<meta name="author" content="Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-29 07:55:12 -0300">
 <title>Behavior-driven development (BDD) Tutorial</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -442,7 +442,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Behavior-driven development (BDD) Tutorial</h1>
 <div class="details">
-<span id="author" class="author">Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-28 15:03:58 -0300</span><br>
+<span id="author" class="author">Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-29 07:55:12 -0300</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -452,9 +452,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#final_code_created_by_following_the_tutorial_below">2.1. Final code (created by following the tutorial below)</a></li>
 <li><a href="#tutorial">2.2. Tutorial</a></li>
+<li><a href="#nice_references">2.3. Nice references</a></li>
 </ul>
 </li>
-<li><a href="#javascript-cucumber-sample">3. JavaScript sample with Cucumber</a></li>
+<li><a href="#javascript-cucumber-sample">3. JavaScript sample with Cucumber</a>
+<ul class="sectlevel2">
+<li><a href="#initial_and_final_code_download">3.1. Initial and final code download</a></li>
+<li><a href="#tutorial_2">3.2. Tutorial</a></li>
+<li><a href="#nice_references_2">3.3. Nice references</a></li>
+</ul>
+</li>
 <li><a href="#typescript-jest-cucumber-sample">4. TypeScript sample with Jest Cucumber</a></li>
 <li><a href="#groovy-spock-sample">5. Groovy sample with Spock Framework</a></li>
 <li><a href="#kotlin-spek-sample">6. Kotlin sample with Spek Framework</a></li>
@@ -804,12 +811,209 @@ $ git push -u origin main -f --tags</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="nice_references">2.3. Nice references</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cucumber.io/docs/cucumber/" class="bare">https://cucumber.io/docs/cucumber/</a></p>
+</li>
+<li>
+<p><a href="https://cucumber.io/docs/tools/" class="bare">https://cucumber.io/docs/tools/</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="javascript-cucumber-sample">3. JavaScript sample with Cucumber</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="initial_and_final_code_download">3.1. Initial and final code download</h3>
+<div class="paragraph">
+<p>node and yarn versions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ node -v
+v12.18.3
+$ yarn -v
+1.22.4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Download:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git clone https://github.com/paulojeronimo/javascript-cucumber-sample
+$ cd javascript-cucumber-sample; javascript_cucumber_sample=$PWD</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quick demonstration of the final code:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ cd final
+$ yarn install
+$ yarn test</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tutorial_2">3.2. Tutorial</h3>
+<div class="literalblock">
+<div class="content">
+<pre>$ d=$javascript_cucumber_sample/tutorial; rm -rf $d &amp;&amp; mkdir $d &amp;&amp; cd $d</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn init -y
+$ yarn add @cucumber/cucumber --dev
+$ echo node_modules &gt; .gitignore
+$ git init; git add .</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git apply &lt; ../initial/package.json.diff</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ (cd ../initial; rsync -R features/is_it_friday_yet.feature ../tutorial/)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ mkdir -p features/step_definitions</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ cat &gt; features/step_definitions/steps.js &lt;&lt;EOF
+const { Given, When, Then } = require('@cucumber/cucumber')
 
+$(`yarn bin`/cucumber-js --format snippets 2&gt; /dev/null)
+EOF</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git add .</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ cp ../initial/features/step_definitions/steps.js features/step_definitions/</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git add .
+$ git apply ../initial/features/step_definitions/steps.js.2.diff</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git add .</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git apply ../initial/features/is_it_friday_yet.feature.diff
+$ git apply ../initial/features/step_definitions/steps.js.3.diff</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git add .</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git apply ../initial/features/step_definitions/steps.js.4.diff</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git apply ../initial/features/is_it_friday_yet.feature.2.diff
+$ git apply ../initial/features/step_definitions/steps.js.5.diff</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ yarn test</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ git add .
+$ git commit -m 'Initial commit'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are "Paulo Jerônimo" (hehehe) push this code this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ cd ..
+$ rsync -av --exclude .git --exclude node_modules tutorial/ final/
+$ git remote add origin git@github.com:paulojeronimo/javascript-cucumber-sample.git
+$ git branch -M main
+$ git push -u origin main -f --tags</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nice_references_2">3.3. Nice references</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cucumber.io/docs/cucumber/" class="bare">https://cucumber.io/docs/cucumber/</a></p>
+</li>
+<li>
+<p><a href="https://cucumber.io/docs/tools/" class="bare">https://cucumber.io/docs/tools/</a></p>
+</li>
+<li>
+<p><a href="https://cucumber.io/docs/cucumber/checking-assertions/#javascript" class="bare">https://cucumber.io/docs/cucumber/checking-assertions/#javascript</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
