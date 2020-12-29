@@ -1,9 +1,11 @@
 [[java-cucumber-sample]]
 = Java sample with Cucumber
 
+Source code: https://github.com/paulojeronimo/java-cucumber-sample.
+
 I created this example in 2013. So, this code is very old (like Java).
 http://ladoservidor.blogspot.com/2013/04/agilebrazil-1.html[Read my
-original blog post about it^] (written in Brazilian Portuguese):
+original blog post about it^] (written in Brazilian Portuguese).
 
 == Final code (created by following the tutorial below)
 
@@ -289,6 +291,11 @@ $ git branch -M main
 $ git push -u origin main -f --tags
 ----
 
-== Nice references
+== Explore more
+
+* Cucumber sample using Spring Boot:
+** https://github.com/paulojeronimo/spring-cucumber-rest-api
+
+== References
 
 include::cucumber-references.adoc[]

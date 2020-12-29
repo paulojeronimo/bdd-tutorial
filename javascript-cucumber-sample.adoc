@@ -1,6 +1,8 @@
 [[javascript-cucumber-sample]]
 = JavaScript sample with Cucumber
 
+Source code: https://github.com/paulojeronimo/javascript-cucumber-sample.
+
 == Initial and final code download
 
 node and yarn versions:
@@ -150,7 +152,7 @@ $ git branch -M main
 $ git push -u origin main -f --tags
 ----
 
-== Nice references
+== References
 
 include::cucumber-references.adoc[]
 * https://cucumber.io/docs/cucumber/checking-assertions/#javascript
