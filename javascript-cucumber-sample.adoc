@@ -31,11 +31,11 @@ Source code: https://github.com/paulojeronimo/javascript-cucumber-sample.
 	$ echo node_modules > .gitignore
 	$ git init; git add .
 
-	$ git apply < ../initial/package.json.diff
+	$ git apply < ../patches/package.json.diff
 
 //[source,diff]
 //----
-//include::javascript-cucumber-sample/initial/package.json.diff[]
+//include::javascript-cucumber-sample/patches/package.json.diff[]
 //----
 
 	$ (cd ../initial; rsync -R features/is_it_friday_yet.feature ../tutorial/)
@@ -76,11 +76,11 @@ EOF
 //link:javascript-cucumber-sample/outputs/yarn-test.2.txt[See the output]
 
 	$ git add .
-	$ git apply ../initial/features/step_definitions/steps.js.2.diff
+	$ git apply ../patches/features/step_definitions/steps.js.2.diff
 
 //[source,diff]
 //----
-//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js.2.diff[]
+//include::javascript-cucumber-sample/patches/features/step_definitions/steps.js.2.diff[]
 //----
 
 	$ yarn test
@@ -89,17 +89,17 @@ EOF
 
 	$ git add .
 
-	$ git apply ../initial/features/is_it_friday_yet.feature.diff
-	$ git apply ../initial/features/step_definitions/steps.js.3.diff
+	$ git apply ../patches/features/is_it_friday_yet.feature.diff
+	$ git apply ../patches/features/step_definitions/steps.js.3.diff
 
 //[source,diff]
 //----
-//include::javascript-cucumber-sample/initial/features/is_it_friday_yet.feature.diff[]
+//include::javascript-cucumber-sample/patches/features/is_it_friday_yet.feature.diff[]
 //----
 
 //[source,diff]
 //----
-//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js.3.diff[]
+//include::javascript-cucumber-sample/patches/features/step_definitions/steps.js.3.diff[]
 //----
 
 	$ yarn test
@@ -108,28 +108,28 @@ EOF
 
 	$ git add .
 
-	$ git apply ../initial/features/step_definitions/steps.js.4.diff
+	$ git apply ../patches/features/step_definitions/steps.js.4.diff
 
 //[source,diff]
 //----
-//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js.4.diff[]
+//include::javascript-cucumber-sample/patches/features/step_definitions/steps.js.4.diff[]
 //----
 
 	$ yarn test
 
 //link:javascript-cucumber-sample/outputs/yarn-test.5.txt[See the output]
 
-	$ git apply ../initial/features/is_it_friday_yet.feature.2.diff
-	$ git apply ../initial/features/step_definitions/steps.js.5.diff
+	$ git apply ../patches/features/is_it_friday_yet.feature.2.diff
+	$ git apply ../patches/features/step_definitions/steps.js.5.diff
 
 //[source,diff]
 //----
-//include::javascript-cucumber-sample/initial/features/is_it_friday_yet.feature.2.diff[]
+//include::javascript-cucumber-sample/patches/features/is_it_friday_yet.feature.2.diff[]
 //----
 
 //[source,diff]
 //----
-//include::javascript-cucumber-sample/initial/features/step_definitions/steps.js.5.diff[]
+//include::javascript-cucumber-sample/patches/features/step_definitions/steps.js.5.diff[]
 //----
 
 	$ yarn test
