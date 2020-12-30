@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-29 12:25:02 -0300">
+<meta name="author" content="Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-30 06:52:45 -0300">
 <title>Behavior-driven development (BDD) Tutorial</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -442,7 +442,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Behavior-driven development (BDD) Tutorial</h1>
 <div class="details">
-<span id="author" class="author">Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-29 12:25:02 -0300</span><br>
+<span id="author" class="author">Paulo Jerônimo &lt;pj@paulojeronimo.com&gt;, 2020-12-30 06:52:45 -0300</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -923,7 +923,7 @@ $ git init; git add .</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ git apply &lt; ../initial/package.json.diff</pre>
+<pre>$ git apply &lt; ../patches/package.json.diff</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -973,7 +973,7 @@ EOF</pre>
 <div class="literalblock">
 <div class="content">
 <pre>$ git add .
-$ git apply ../initial/features/step_definitions/steps.js.2.diff</pre>
+$ git apply ../patches/features/step_definitions/steps.js.2.diff</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -988,8 +988,8 @@ $ git apply ../initial/features/step_definitions/steps.js.2.diff</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ git apply ../initial/features/is_it_friday_yet.feature.diff
-$ git apply ../initial/features/step_definitions/steps.js.3.diff</pre>
+<pre>$ git apply ../patches/features/is_it_friday_yet.feature.diff
+$ git apply ../patches/features/step_definitions/steps.js.3.diff</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -1004,7 +1004,7 @@ $ git apply ../initial/features/step_definitions/steps.js.3.diff</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ git apply ../initial/features/step_definitions/steps.js.4.diff</pre>
+<pre>$ git apply ../patches/features/step_definitions/steps.js.4.diff</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -1014,8 +1014,8 @@ $ git apply ../initial/features/step_definitions/steps.js.3.diff</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$ git apply ../initial/features/is_it_friday_yet.feature.2.diff
-$ git apply ../initial/features/step_definitions/steps.js.5.diff</pre>
+<pre>$ git apply ../patches/features/is_it_friday_yet.feature.2.diff
+$ git apply ../patches/features/step_definitions/steps.js.5.diff</pre>
 </div>
 </div>
 <div class="literalblock">
